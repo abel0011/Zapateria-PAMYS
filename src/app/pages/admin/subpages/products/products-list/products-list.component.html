@@ -16,12 +16,13 @@
       </div>
     </div>
 
-<!-- Search -->
-
-
+    <!-- Search -->
 
     <app-spinner [show]="showSpinner"></app-spinner>
-    <div *ngIf="!showSpinner && listProduct.length != 0" class="flex items-center justify-between">
+    <div
+      *ngIf="!showSpinner && listProduct.length != 0"
+      class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+    >
       <a
         mat-flat-button
         color="primary"
@@ -31,12 +32,23 @@
         Agregar producto
       </a>
       <mat-form-field class="example-form-field">
-      <mat-label>Ingresa el Vendor</mat-label>
-      <input matInput type="text"  (keyup)="filterByName()" [(ngModel)]=name >
-        <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
-        <mat-icon>close</mat-icon>
-      </button>
-        <br>
+        <mat-label>Ingresa el Vendor</mat-label>
+        <input
+          matInput
+          type="text"
+          (keyup)="filterByName()"
+          [(ngModel)]="name"
+        />
+        <button
+          mat-button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="name = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <br />
       </mat-form-field>
     </div>
     <div class="{{ ocultado }}">

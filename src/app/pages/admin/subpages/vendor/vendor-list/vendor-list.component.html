@@ -16,13 +16,11 @@
       </div>
     </div>
 
-
-
-
-
-
     <app-spinner [show]="showSpinner"></app-spinner>
-    <div *ngIf="!showSpinner && listVendors.length != 0" class="flex items-center justify-between">
+    <div
+      *ngIf="!showSpinner && listVendors.length != 0"
+      class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+    >
       <a
         mat-flat-button
         color="primary"
@@ -31,15 +29,26 @@
       >
         Agregar proveedor
       </a>
-    <!-- Search -->
-    <mat-form-field class="example-form-field">
-      <mat-label>Ingresa el Vendor</mat-label>
-      <input matInput type="text"  (keyup)="filterByName()" [(ngModel)]=name >
-      <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
-        <mat-icon>close</mat-icon>
-      </button>
-      <br>
-    </mat-form-field>    
+      <!-- Search -->
+      <mat-form-field class="example-form-field">
+        <mat-label>Ingresa el Vendor</mat-label>
+        <input
+          matInput
+          type="text"
+          (keyup)="filterByName()"
+          [(ngModel)]="name"
+        />
+        <button
+          mat-button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="name = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <br />
+      </mat-form-field>
     </div>
     <div class="{{ ocultado }}">
       <div style="overflow-x: auto">

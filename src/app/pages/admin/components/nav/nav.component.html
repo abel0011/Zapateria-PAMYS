@@ -9,44 +9,37 @@
   >
     <mat-toolbar>
       <div class="flex-shrink-0 m-auto w-14 h-14">
-        <img class="rounded-full w-14 h-14" src="{{ userImageURL }}" alt="">
+        <img class="rounded-full w-14 h-14" src="{{ userImageURL }}" alt="" />
       </div>
     </mat-toolbar>
     <div class="admin-name">
-      <span class="unselectable">{{ user.username }}</span>
+      <span class="unselectable capitalize" style="font-family: Roboto">{{
+        user.username
+      }}</span>
     </div>
-    <mat-horizontal-stepper class="separator">
-    </mat-horizontal-stepper>
-    <mat-nav-list>       
+    <mat-horizontal-stepper class="separator"> </mat-horizontal-stepper>
+    <mat-nav-list>
       <a mat-list-item routerLink="/admin/dashboard">
         <div class="flex flex-col m-auto">
-          <span class="material-icons icon">
-            desktop_windows
-          </span>
+          <span class="material-icons icon"> desktop_windows </span>
           <span class="text-sm text-center text-white">Dashboard</span>
         </div>
       </a>
       <a mat-list-item routerLink="/admin/orders">
         <div class="flex flex-col m-auto">
-          <span class="material-icons icon">
-            shopping_bag
-          </span>
+          <span class="material-icons icon"> shopping_bag </span>
           <span class="text-sm text-center text-white">Pedidos</span>
         </div>
       </a>
       <a mat-list-item class="img-hover unselectable">
         <div class="flex flex-col m-auto">
-          <span class="material-icons icon">
-            build
-          </span>
+          <span class="material-icons icon"> build </span>
           <span class="text-sm text-center text-white">Mantenimientos</span>
         </div>
         <div class="hover-popup">
           <a mat-list-item routerLink="/admin/categorys">
             <div class="flex flex-col m-auto">
-              <span class="material-icons icon">
-                category
-              </span>
+              <span class="material-icons icon"> category </span>
               <span class="text-sm text-center text-white">Categorias</span>
             </div>
           </a>
@@ -58,58 +51,56 @@
           </a>
           <a mat-list-item routerLink="/admin/vendors">
             <div class="flex flex-col m-auto">
-              <span class="material-icons icon">
-                location_city
-              </span>
+              <span class="material-icons icon"> location_city </span>
               <span class="text-sm text-center text-white">Proveedores</span>
             </div>
           </a>
           <a mat-list-item routerLink="/admin/clients">
             <div class="flex flex-col m-auto">
-              <span class="material-icons icon">
-                people
-              </span>
+              <span class="material-icons icon"> people </span>
               <span class="text-sm text-center text-white">Usuarios</span>
             </div>
           </a>
           <a mat-list-item routerLink="/admin/payment-types">
             <div class="flex flex-col m-auto">
-              <span class="material-icons icon">
-                attach_money
-              </span>
+              <span class="material-icons icon"> attach_money </span>
               <span class="text-sm text-center text-white">Tipos de pago</span>
             </div>
-          </a>  
+          </a>
           <a mat-list-item routerLink="/admin/order-status">
             <div class="flex flex-col m-auto">
               <i class="fas fa-compass icon"></i>
-              <span class="text-sm text-center text-white">Estados de pedido</span>
+              <span class="text-sm text-center text-white"
+                >Estados de pedido</span
+              >
             </div>
-          </a> 
+          </a>
           <a mat-list-item routerLink="/admin/document-type">
             <div class="flex flex-col m-auto">
               <i class="fas fa-file icon"></i>
-              <span class="text-sm text-center text-white">Documentos de venta</span>
+              <span class="text-sm text-center text-white"
+                >Documentos de venta</span
+              >
             </div>
-          </a>              
-        </div>        
-      </a>     
-      <a mat-list-item routerLink="/my-account/profile" class="unselectable settings">
+          </a>
+        </div>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/my-account/profile"
+        class="unselectable settings"
+      >
         <div class="flex flex-col m-auto">
-          <span class="material-icons icon">
-            settings
-          </span>
+          <span class="material-icons icon"> settings </span>
           <span class="text-sm text-center text-white">Editar mi perfil</span>
         </div>
-      </a> 
+      </a>
       <a mat-list-item (click)="loguout()" class="logout unselectable">
         <div class="flex flex-col m-auto">
-          <span class="material-icons icon">
-            logout
-          </span>
+          <span class="material-icons icon"> logout </span>
           <span class="text-sm text-center text-white">Cerrar sesión</span>
         </div>
-      </a>         
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -121,12 +112,12 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>PAMYS-STORE</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

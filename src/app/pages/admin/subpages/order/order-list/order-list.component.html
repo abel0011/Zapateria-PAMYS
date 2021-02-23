@@ -3,17 +3,23 @@
 </app-header-custom>
 
 <!-- Search -->
-<div class="flex flex-row items-center justify-between p-2 table-container">
-  
-<mat-form-field appearance="fill">
-  <mat-label>Seleccione Estado</mat-label>
-  <mat-select >
-    <mat-option #all (click)="filterByStatus('Todos')">Todos</mat-option>
-    <mat-option #es *ngFor="let e of orderStatuses" [value]="e.status"  (click)="filterByStatus(es.value)">
-      {{e.status}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div
+  class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Estado</mat-label>
+    <mat-select>
+      <mat-option #all (click)="filterByStatus('Todos')">Todos</mat-option>
+      <mat-option
+        #es
+        *ngFor="let e of orderStatuses"
+        [value]="e.status"
+        (click)="filterByStatus(es.value)"
+      >
+        {{ e.status }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <input type="date" #date (change)="changedate(date.value)" />
 </div>
@@ -76,7 +82,7 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="text-sm text-gray-900">
-                  {{ o.dateCreated | date: 'dd/MM/yyyy' }}
+                  {{ o.dateCreated | date: "dd/MM/yyyy" }}
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">

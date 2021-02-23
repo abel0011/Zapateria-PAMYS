@@ -1,96 +1,155 @@
-
 <!-- Search -->
-<div class="flex flex-row table-container p-2 justify-between items-center">
-
-<mat-form-field class="example-form-field">
-  <mat-label>Ingresa Estado</mat-label>
-  <input matInput type="text"  (keyup)="filterByStatus()" [(ngModel)]=statusSelected >
-  <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="statusSelected=''">
-    <mat-icon>close</mat-icon>
-  </button>
-  <br>
-</mat-form-field>
+<div
+  class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Estado</mat-label>
+    <mat-select>
+      <mat-option #all (click)="filterByStatus('Todos')">Todos</mat-option>
+      <mat-option
+        #es
+        *ngFor="let e of orderStatuses"
+        [value]="e.status"
+        (click)="filterByStatus(es.value)"
+      >
+        {{ e.status }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- <mat-form-field >
+    <mat-label>Ingresa Estado</mat-label>
+    <input
+      matInput
+      type="text"
+      (keyup)="filterByStatus()"
+      [(ngModel)]="statusSelected"
+    />
+    <button
+      mat-button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="statusSelected = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <br />
+  </mat-form-field> -->
 
   <input type="date" #date (change)="changedate(date.value)" />
-
 </div>
 
 <app-spinner [show]="loading"></app-spinner>
-<div class="flex flex-col table-container" *ngIf="!loading" >
+<div class="flex flex-col table-container" *ngIf="!loading">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-      <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg table-box">
+      <div
+        class="overflow-hidden border-b border-gray-200 sm:rounded-lg table-box"
+      >
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+              <th
+                scope="col"
+                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+              >
                 Pedido
               </th>
-              <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+              <th
+                scope="col"
+                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+              >
                 Fecha
               </th>
-              <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+              <th
+                scope="col"
+                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+              >
                 Estado
               </th>
-              <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+              <th
+                scope="col"
+                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+              >
                 Total
               </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            <tr *ngFor="let o of orders" >
+            <tr *ngFor="let o of orders">
               <td class="py-4 pl-6 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 w-10 h-10">
-                    <img class="w-10 h-10 rounded-full" src="{{ getUserImageURL() }}" alt="">
+                    <img
+                      class="w-10 h-10 rounded-full"
+                      src="{{ getUserImageURL() }}"
+                      alt=""
+                    />
                   </div>
                   <div class="ml-4">
                     <div class="text-sm font-medium text-gray-900">
                       {{ o.client!.firstName }}
                       {{ o.client!.lastName }}
                     </div>
-                    <div class="text-sm text-gray-500">
-                      # {{ o.idOrder }}
-                    </div>
+                    <div class="text-sm text-gray-500"># {{ o.idOrder }}</div>
                   </div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{ o.dateCreated | date: 'dd/MM/yyyy' }}</div>
+                <div class="text-sm text-gray-900">
+                  {{ o.dateCreated | date: "dd/MM/yyyy" }}
+                </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="inline-flex px-2 text-xs font-semibold text-gray-700 bg-gray-300 rounded-full leading-5"
-                      *ngIf="o.idOrderStatus == 1">
+                <span
+                  class="inline-flex px-2 text-xs font-semibold text-gray-700 bg-gray-300 rounded-full leading-5"
+                  *ngIf="o.idOrderStatus == 1"
+                >
                   {{ o.orderStatus!.status }}
                 </span>
-                <span class="inline-flex px-2 text-xs font-semibold text-yellow-600 bg-yellow-200 rounded-full leading-5"
-                      *ngIf="o.idOrderStatus == 2">
+                <span
+                  class="inline-flex px-2 text-xs font-semibold text-yellow-600 bg-yellow-200 rounded-full leading-5"
+                  *ngIf="o.idOrderStatus == 2"
+                >
                   {{ o.orderStatus!.status }}
                 </span>
-                <span class="inline-flex px-2 text-xs font-semibold text-blue-700 bg-blue-200 rounded-full leading-5"
-                      *ngIf="o.idOrderStatus == 3">
+                <span
+                  class="inline-flex px-2 text-xs font-semibold text-blue-700 bg-blue-200 rounded-full leading-5"
+                  *ngIf="o.idOrderStatus == 3"
+                >
                   {{ o.orderStatus!.status }}
                 </span>
-                <span class="inline-flex px-2 text-xs font-semibold text-green-700 bg-green-200 rounded-full leading-5"
-                      *ngIf="o.idOrderStatus == 4">
+                <span
+                  class="inline-flex px-2 text-xs font-semibold text-green-700 bg-green-200 rounded-full leading-5"
+                  *ngIf="o.idOrderStatus == 4"
+                >
                   {{ o.orderStatus!.status }}
                 </span>
-                <span class="inline-flex px-2 text-xs font-semibold text-red-700 bg-red-300 rounded-full leading-5"
-                      *ngIf="o.idOrderStatus == 5">
+                <span
+                  class="inline-flex px-2 text-xs font-semibold text-red-700 bg-red-300 rounded-full leading-5"
+                  *ngIf="o.idOrderStatus == 5"
+                >
                   {{ o.orderStatus!.status }}
                 </span>
               </td>
               <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                {{ o.total | currency: 'S/ ' }}
+                {{ o.total | currency: "S/ " }}
               </td>
-              <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                <button *ngIf="o.idPaymentStatus==2" (click)="uploadVoucher()" class="text-indigo-600 hover:text-indigo-900">Subir voucher</button>
+              <td
+                class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap"
+              >
+                <button
+                  *ngIf="o.idPaymentStatus == 2"
+                  (click)="uploadVoucher()"
+                  class="text-indigo-600 hover:text-indigo-900"
+                >
+                  Subir voucher
+                </button>
               </td>
-            </tr>              
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
-

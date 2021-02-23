@@ -16,17 +16,16 @@
       </div>
     </div>
 
-
-<!-- Search -->
-<div class="flex flex-row items-center justify-between p-2 table-container">
-  
-
-
-</div>
-
+    <!-- Search -->
+    <div
+      class="flex flex-row items-center justify-between p-2 table-container"
+    ></div>
 
     <app-spinner [show]="showSpinner"></app-spinner>
-    <div *ngIf="!showSpinner && listPaymentTypes.length != 0" class="flex items-center justify-between">
+    <div
+      *ngIf="!showSpinner && listPaymentTypes.length != 0"
+      class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+    >
       <a
         mat-flat-button
         color="primary"
@@ -35,15 +34,22 @@
       >
         Agregar tipo de pago
       </a>
-    <mat-form-field appearance="fill">
-      <mat-label>Seleccione Tipo de Pago</mat-label>
-      <mat-select >
-        <mat-option #all [value]="'Todos'" (click)="getstatus(all.value)">Todos</mat-option>
-        <mat-option #es *ngFor="let e of tipo" [value]="e.type"  (click)="getstatus(es.value)">
-          {{e.type}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>    
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione Tipo de Pago</mat-label>
+        <mat-select>
+          <mat-option #all [value]="'Todos'" (click)="getstatus(all.value)"
+            >Todos</mat-option
+          >
+          <mat-option
+            #es
+            *ngFor="let e of tipo"
+            [value]="e.type"
+            (click)="getstatus(es.value)"
+          >
+            {{ e.type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="{{ ocultado }}">
       <div style="overflow-x: auto">
@@ -64,14 +70,11 @@
 
           <!-- Name Column -->
           <ng-container matColumnDef="Type">
-            <th mat-header-cell *matHeaderCellDef class="text-center">
-              Type
-            </th>
+            <th mat-header-cell *matHeaderCellDef class="text-center">Type</th>
             <td mat-cell *matCellDef="let element" class="">
               {{ element.type }}
             </td>
           </ng-container>
-
 
           <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef class="text-center">
@@ -83,7 +86,10 @@
                   mat-mini-fab
                   color="primary"
                   class="mx-1"
-                  [routerLink]="['/admin/payment-types/form', element.idPaymentType]"
+                  [routerLink]="[
+                    '/admin/payment-types/form',
+                    element.idPaymentType
+                  ]"
                 >
                   <mat-icon>edit</mat-icon>
                 </a>
@@ -110,4 +116,3 @@
     </div>
   </div>
 </div>
-
