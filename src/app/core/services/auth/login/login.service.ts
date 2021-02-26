@@ -3,43 +3,43 @@ import {Client} from '../../../api/models/client';
 import {CartService} from '../../cart/cart.service';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class LoginService {
-  nameJWT = 'jwt';
-  nameCLient = 'client';
-  constructor(private cartService: CartService) {}
+    nameJWT = 'jwt';
+    nameCLient = 'client';
+    constructor(private cartService: CartService) {}
 
-  saveJWT(jwt: string, user: Client): void {
-    if (this.getJWT()) {
-      localStorage.removeItem(this.nameJWT);
-      localStorage.removeItem(this.nameCLient);
-      localStorage.setItem(this.nameJWT, jwt);
-      localStorage.setItem(this.nameCLient, JSON.stringify(user));
+    saveJWT(jwt: string, user: Client): void {
+        if (this.getJWT()) {
+            localStorage.removeItem(this.nameJWT);
+            localStorage.removeItem(this.nameCLient);
+            localStorage.setItem(this.nameJWT, jwt);
+            localStorage.setItem(this.nameCLient, JSON.stringify(user));
+        }
+        localStorage.setItem(this.nameJWT, jwt);
+        localStorage.setItem(this.nameCLient, JSON.stringify(user));
     }
-    localStorage.setItem(this.nameJWT, jwt);
-    localStorage.setItem(this.nameCLient, JSON.stringify(user));
-  }
 
-  getJWT(): string | null {
-    return localStorage.getItem(this.nameJWT);
-  }
-  getUser(): Client | null {
-    return JSON.parse(localStorage.getItem(this.nameCLient) || '');
-  }
+    getJWT(): string | null {
+        return localStorage.getItem(this.nameJWT);
+    }
+    getUser(): Client {
+        return JSON.parse(localStorage.getItem(this.nameCLient)!);
+    }
 
-  isLogged(): boolean {
-    return this.getJWT() ? true : false;
-  }
+    isLogged(): boolean {
+        return this.getJWT() ? true : false;
+    }
 
-  logout(): void {
-    localStorage.removeItem(this.nameJWT);
-    localStorage.removeItem(this.nameCLient);
-    localStorage.removeItem("cart");
-    this.cartService.initialiseCart();
-  }
-  saveUser(user: Client): void {
-    localStorage.removeItem(this.nameCLient);
-    localStorage.setItem(this.nameCLient, JSON.stringify(user));
-  }
+    logout(): void {
+        localStorage.removeItem(this.nameJWT);
+        localStorage.removeItem(this.nameCLient);
+        localStorage.removeItem("cart");
+        this.cartService.initialiseCart();
+    }
+    saveUser(user: Client): void {
+        localStorage.removeItem(this.nameCLient);
+        localStorage.setItem(this.nameCLient, JSON.stringify(user));
+    }
 }

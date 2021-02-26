@@ -4,7 +4,7 @@
 
 <div class="mx-2 row justify-content-center">
   <div class="my-4 col-md-10">
-    <div class="{{ ocultado }}">
+    <div>
       <div
         class="alert alert-danger"
         role="alert"
@@ -16,23 +16,16 @@
       </div>
     </div>
 
-<!-- Search -->
-<div class="flex flex-row table-container p-2 justify-between items-center">
-  
-<mat-form-field appearance="fill">
-  <mat-label>Seleccione Tipo de Categoria</mat-label>
-  <mat-select >
-    <mat-option #es *ngFor="let e of tipo" [value]="e.name"  (click)="getstatus(es.value)">
-      {{e.name}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-</div>
-
+    <!-- Search -->
+    <div
+      class="flex flex-row items-center justify-between p-2 table-container"
+    ></div>
 
     <app-spinner [show]="showSpinner"></app-spinner>
-    <div *ngIf="!showSpinner && listCategorys.length != 0">
+    <div
+      *ngIf="!showSpinner && listCategorys.length != 0"
+      class="flex table-container p-2 sm:justify-between items-center flex-col sm:flex-row justify-center"
+    >
       <a
         mat-flat-button
         color="primary"
@@ -41,8 +34,24 @@
       >
         Agregar categoria
       </a>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione Tipo de Categoria</mat-label>
+        <mat-select>
+          <mat-option #all [value]="'Todos'" (click)="filterByType(all.value)"
+            >Todos</mat-option
+          >
+          <mat-option
+            #es
+            *ngFor="let e of categoriesNames"
+            [value]="e"
+            (click)="filterByType(es.value)"
+          >
+            {{ e }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <div class="{{ ocultado }}">
+    <div *ngIf="!showSpinner">
       <div style="overflow-x: auto">
         <table mat-table [dataSource]="dataSource" class="text-center">
           <!-- Position Column -->
@@ -69,7 +78,9 @@
                 *ngIf="element.active == 1"
                 >Active</span
               >
-              <span class="inline-flex items-center p-1 px-2 text-xs leading-none text-gray-800 bg-red-100 rounded-full font-weight-bold" *ngIf="element.active == 0"
+              <span
+                class="inline-flex items-center p-1 px-2 text-xs leading-none text-gray-800 bg-red-100 rounded-full font-weight-bold"
+                *ngIf="element.active == 0"
                 >Inactive</span
               >
             </td>

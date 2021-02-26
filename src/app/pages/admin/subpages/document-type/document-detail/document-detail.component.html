@@ -45,7 +45,7 @@
               color="accent"
               class="text-white w-100 h6"
               style="background-color: #47b475"
-              *ngIf="documentType.idDcoumentType == null; else elseButton"
+              *ngIf="documentType.idDocumentType == null; else elseButton"
               (click)="create()"
               [disabled]="!documentTypeForm.form.valid"
             >

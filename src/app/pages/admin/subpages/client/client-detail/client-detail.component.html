@@ -177,8 +177,8 @@
                 name="active"
               >
                 <div class="d-flex justify-content-around align-items-center">
-                  <mat-radio-button [value]="true">Activated</mat-radio-button>
-                  <mat-radio-button [value]="false">Disabled</mat-radio-button>
+                  <mat-radio-button [value]="1">Activated</mat-radio-button>
+                  <mat-radio-button [value]="0">Disabled</mat-radio-button>
                 </div>
               </mat-radio-group>
               <div
@@ -219,7 +219,7 @@
               color="accent"
               class="text-white w-100 h6"
               style="background-color: #47b475"
-              *ngIf="client.idClient == null; else elseButton"
+              *ngIf="client.idClient == undefined; else elseButton"
               (click)="create()"
               [disabled]="!clientForm.form.valid"
             >

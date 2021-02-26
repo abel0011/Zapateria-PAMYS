@@ -40,35 +40,35 @@
         </p>
         <div class="flex flex-col items-center justify-center w-full">
           <a
-            *ngIf="user.role!.idRole==2"
+            *ngIf="user.role?.idRole==2"
             routerLink="/admin"
-            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase transition duration-500 ease-out transform border shadow-md md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase border shadow-md transition duration-500 ease-out transform md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
           >
             <i class="mr-2 text-lg fa fa-user-shield" aria-hidden="true"></i>
             <span>Panel de administración</span>
           </a>
           <a
             routerLink="/my-account/profile"
-            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase transition duration-500 ease-out transform border shadow-md md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase border shadow-md transition duration-500 ease-out transform md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
           >
             <i class="mr-2 text-lg fa fa-user" aria-hidden="true"></i>
             <span>Mis Datos</span>
           </a>
           <a
             routerLink="/my-account/edit"
-            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase transition duration-500 ease-out transform border shadow-md md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase border shadow-md transition duration-500 ease-out transform md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
           >
             <i class="mr-2 text-lg fas fa-edit"></i><span>Editar Cuenta</span>
           </a>
           <a
             routerLink="/my-account/orders"
-            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase transition duration-500 ease-out transform border shadow-md md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold uppercase border shadow-md transition duration-500 ease-out transform md:px-10 rounded-3xl hover-color-principal-outline bg-principal"
           >
             <i class="mr-2 text-lg far fa-file-alt"></i><span>Mis Pedidos</span>
           </a>
           <button
             (click)="cerrarSesion()"
-            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold text-white uppercase transition duration-500 ease-out transform bg-red-600 border shadow-md cursor-pointer md:px-10 rounded-3xl"
+            class="flex items-center justify-center w-full px-6 py-2 mx-2 my-2 text-xs font-semibold text-white uppercase bg-red-600 border shadow-md cursor-pointer transition duration-500 ease-out transform md:px-10 rounded-3xl"
           >
             <i class="mr-2 text-lg fas fa-power-off"></i
             ><span>Cerrar Sesion</span>

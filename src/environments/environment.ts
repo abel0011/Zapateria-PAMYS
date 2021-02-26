@@ -1,17 +1,17 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const prod = false;
+const urlDomain = 'http://localhost:8090';
 export const environment = {
-  production: false,
-  apiURL: 'http://localhost:8090/api',
-  url_api: 'https://platzi-store.herokuapp.com',
-  url_client_images: 'http://localhost:8090/api/public/clients/photos/',
-  url_voucher_images: 'http://localhost:8090/api/public/vouchers/photos/',
-  url_products_images: 'http://localhost:8090/api/public/product/photos/',
-  url_productos_other_images:
-    'http://localhost:8090/api/public/product/photos/others/',
-  url_product_not_found: 'https://www.w4ter.co.za/error.png',
+    production: prod,
+    apiURL: urlDomain,
+    url_api: 'https://platzi-store.herokuapp.com',
+    url_client_images: `${urlDomain}/uploads/photos-clients/`,
+    url_voucher_images: `${urlDomain}/uploads/vouchers/`,
+    url_products_images: `${urlDomain}/uploads/products/thumbnails/`,
+    url_productos_other_images: `${urlDomain}/uploads/products/product-images/`,
+    url_product_not_found: 'https://www.w4ter.co.za/error.png',
 };
 
 /*
